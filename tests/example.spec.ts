@@ -16,3 +16,13 @@ test('get started link', async ({ page }) => {
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
+
+test('Arati test ', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+
+  const logo = await page.getByRole('link', { name: 'GitHub repository' }).isVisible();
+  await expect(logo).toBeTruthy();
+
+  // Expect a title "to contain" a substring.
+  await expect(page).toHaveTitle(/Playwright/);
+});
