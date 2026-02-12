@@ -28,10 +28,9 @@ jobs:
 
     - name: create .env file
       run: |
-        echo "BASE_URL=${{ $BASE_URL }}" >> .env
-        echo "EMAIL=${{ $EMAIL }}" >> .env
-        echo "PASSWORD=${{ $PASSWORD }}" >> .env
-        
+        echo "BASE_URL=$BASE_URL" >> .env
+        echo "EMAIL=$EMAIL" >> .env
+        echo "PASSWORD=$PASSWORD" >> .env
 
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
