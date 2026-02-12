@@ -9,7 +9,7 @@ test.describe('Learning', () => {
     await expect(page).toHaveTitle(/Playwright/);
   });
 
-  test('get started link', async ({ page }) => {
+  test('get started link', { tag: ['@smoke'] }, async ({ page }) => {
     await page.goto('https://playwright.dev/');
 
     // Click the get started link.
@@ -30,7 +30,7 @@ test.describe('Learning', () => {
     await expect(page).toHaveTitle(/Playwright/);
   });
 
-  test('navigate to google.com and verify Gmail text is present', async ({ page }) => {
+  test('navigate to google.com and verify Gmail text is present',  { tag: ['@regression'] }, async ({ page }) => {
     await page.goto('https://www.google.com');
     const gmailLink = page.getByRole('link', { name: 'Gmail' });
     await expect(gmailLink).toBeVisible();
@@ -39,7 +39,7 @@ test.describe('Learning', () => {
     await expect(gmailLink).toHaveText('Gmail');
   });
 
-  test('check visibility of important links on testautomationpractice.blogspot.com', async ({ page }) => {
+  test('check visibility of important links on testautomationpractice.blogspot.com',  { tag: ['@smoke'] }, async ({ page }) => {
     await page.goto('https://testautomationpractice.blogspot.com/');  
     const homeLink = page.getByRole('link', { name: /home/i }).first()
     await expect(homeLink).toBeVisible();
@@ -60,7 +60,7 @@ test.describe('Learning', () => {
 
 
 
-  test('navigate to Blog and check SDET-QA Blog link and URL', async ({ page }) => {
+  test('navigate to Blog and check SDET-QA Blog link and URL', { tag: ['@smoke'] }, async ({ page }) => {
     await page.goto('https://testautomationpractice.blogspot.com/');
     // Click on the 'Blog' link
     const blogLink = page.getByRole('link', { name: /blog/i }).first();
@@ -84,7 +84,7 @@ test.describe('Learning', () => {
     // await newPage.close();
   })
 
-  test('Udemy Courses: check course tile count', async ({ page }) => {
+  test('Udemy Courses: check course tile count',  { tag: ['@regression'] }, async ({ page }) => {
     await page.goto('https://testautomationpractice.blogspot.com/');
     
     // Click on the 'Udemy Courses' link
