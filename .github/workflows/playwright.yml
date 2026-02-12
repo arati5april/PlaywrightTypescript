@@ -1,6 +1,11 @@
 name: Playwright Tests Arati
 on:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Test tag to run (optional, default is smoke)'
+        required: false
+        default: smoke
   push:
     branches: [ main, master ]
   pull_request:
@@ -36,7 +41,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: npm run test:smoke
+      run: npx playwright test:smoke
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
