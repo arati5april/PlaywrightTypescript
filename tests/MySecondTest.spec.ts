@@ -6,10 +6,21 @@ import { clear } from 'node:console';
 dotenv.config({ quiet: true });
 test.describe('Login Tests', () => { //Tc Added in describe group 
 
-    test.use({ storageState: 'loginState.json' });
+  //  test.use({ storageState: 'loginState.json' });
+  test.beforeEach( async ({ page }) => { //Add tag and only smoke tc added in cicd 
+    await page.goto('/');
+        await page.getByRole('link', { name: 'Signup / Login' }).click();
+        await page.locator('#form input[name="email"]').first().fill(process.env.EMAIL!);
+        await page.getByRole('textbox', { name: 'Password' }).fill(process.env.PASSWORD!);
+        await page.getByRole('button', { name: 'Login' }).click();
+    });
+
+
+
     
     test('search for product after login', { tag: ['@abc'] }, async ({ page }) => {
-        await page.getByRole('link', { name: ' Products' }).click();
+       
+        await page.getByRole('link', { name: 'Products' }).click();
         await page.getByRole('textbox', { name: 'Search Product' }).click();
         await page.getByRole('textbox', { name: 'Search Product' }).fill('blue top');
         await page.locator('i.fa.fa-search').click();
@@ -47,13 +58,14 @@ test.describe('Login Tests', () => { //Tc Added in describe group
         console.log("API testcase count =", TestCount);
 
     });
+
     test('should display "Logged in as Arati Kadam" after login', { tag: ['@abc'] }, async ({ page }) => {
         // The login steps are in beforeEach, so we can directly check the text
         await expect(page.getByText('Logged in as Arati Kadam', { exact: true })).toBeVisible();
 
     });
 
-
+    
 });
 
 
