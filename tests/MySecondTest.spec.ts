@@ -12,7 +12,7 @@ test.describe('Login Tests', () => { //Tc Added in describe group
         await page.getByRole('link', { name: 'Signup / Login' }).click();
         await page.locator('#form input[name="email"]').first().fill(process.env.EMAIL!);
         await page.getByRole('textbox', { name: 'Password' }).fill(process.env.PASSWORD!);
-        await page.getByRole('button', { name: 'Login' }).click();
+        await page.getByRole('button', { name: 'Login' }).click({ timeout: 5000 });
     });
 
 
