@@ -87,7 +87,7 @@ test('Add to cart product', { tag: ['@abc'] }, async ({ page }) => {
 
     await page.getByText('View Cart', { exact: true }).click();
 
-}):
+});
 
 
 
