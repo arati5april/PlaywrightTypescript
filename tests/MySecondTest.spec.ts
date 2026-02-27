@@ -6,9 +6,9 @@ import { clear } from 'node:console';
 dotenv.config({ quiet: true });
 test.describe('Login Tests', () => { //Tc Added in describe group 
 
-  //  test.use({ storageState: 'loginState.json' });
-  test.beforeEach( async ({ page }) => { //Add tag and only smoke tc added in cicd 
-    await page.goto('/');
+    //  test.use({ storageState: 'loginState.json' });
+    test.beforeEach(async ({ page }) => { //Add tag and only smoke tc added in cicd 
+        await page.goto('/');
         await page.getByRole('link', { name: 'Signup / Login' }).click();
         await page.locator('#form input[name="email"]').first().fill(process.env.EMAIL!);
         await page.getByRole('textbox', { name: 'Password' }).fill(process.env.PASSWORD!);
@@ -17,9 +17,9 @@ test.describe('Login Tests', () => { //Tc Added in describe group
 
 
 
-    
+
     test('search for product after login', { tag: ['@abc'] }, async ({ page }) => {
-       
+
         await page.getByRole('link', { name: 'Products' }).click();
         await page.getByRole('textbox', { name: 'Search Product' }).click();
         await page.getByRole('textbox', { name: 'Search Product' }).fill('blue top');
@@ -65,8 +65,30 @@ test.describe('Login Tests', () => { //Tc Added in describe group
 
     });
 
-    
+
 });
+test('Add to cart product', { tag: ['@abc'] }, async ({ page }) => {
+    await page.goto('https://automationexercise.com/');
+
+
+    await page.locator("//a[@href='/products']").click();
+
+
+    await page.locator("//a[@href='#Women']").click();
+
+
+    await page.locator('span.badge.pull-right').first().click();
+
+
+    await page.locator("a[href='/category_products/1']").click();
+
+
+    await page.locator('a').filter({ hasText: 'Add to cart' }).first().click();
+
+    await page.getByText('View Cart', { exact: true }).click();
+});
+
+
 
 
 
