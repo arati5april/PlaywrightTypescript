@@ -33,7 +33,7 @@ export default defineConfig({
     // baseURL: 'http://localhost:3000',
     baseURL: process.env.BASE_URL!,
     storageState: 'loginState.json',
-    headless: false,
+    headless: true,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
