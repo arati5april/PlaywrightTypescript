@@ -86,8 +86,11 @@ test('Add to cart product', { tag: ['@abc'] }, async ({ page }) => {
     await page.locator('a').filter({ hasText: 'Add to cart' }).first().click();
 
     await page.getByText('View Cart', { exact: true }).click();
-    
-});
+
+}):
+
+
+
 
 
 
