@@ -24,7 +24,7 @@ test.describe('Login Tests', () => { //Tc Added in describe group
 
 
 
-    test('search for product after login', { tag: ['@abc'] }, async ({ page }) => {
+    test('search for product after login', { tag: ['@smoke'] }, async ({ page }) => {
 
         await page.getByRole('link', { name: 'Products' }).click();
         await page.getByRole('textbox', { name: 'Search Product' }).click();
@@ -32,7 +32,7 @@ test.describe('Login Tests', () => { //Tc Added in describe group
         await page.locator('i.fa.fa-search').click();
     });
 
-    test('Get testcase count', { tag: ['@abc'] }, async ({ page }) => {
+    test('Get testcase count', { tag: ['@smoke'] }, async ({ page }) => {
         await page.locator('button').filter({ hasText: 'Test Cases' }).first().click();
         await page.locator('.panel-title').first().waitFor()
         const testCount = await page.locator('.panel-title').count()
@@ -40,7 +40,7 @@ test.describe('Login Tests', () => { //Tc Added in describe group
     });
     
        
-    test('test1 Print testcases name', { tag: ['@abc'] }, async ({ page }) => {
+    test('test1 Print testcases name', { tag: ['@smoke'] }, async ({ page }) => {
 
         // Click on Test Cases
         await page.locator('button', { hasText: 'Test Cases' }).first().click();
@@ -65,7 +65,7 @@ test.describe('Login Tests', () => { //Tc Added in describe group
        });
 
     
-    test('Print All api name', { tag: ['@abc'] }, async ({ page }) => {
+    test('Print All api name', { tag: ['@smoke'] }, async ({ page }) => {
         await page.locator('button').filter({ hasText: 'APIs list for practice' }).first().click();
         await page.locator('.panel-title').first().waitFor();
         const PanelTitles = await page.locator('.panel-title').allTextContents();
@@ -74,7 +74,7 @@ test.describe('Login Tests', () => { //Tc Added in describe group
         });
 
 
-    test('Count of api test cases', { tag: ['@abc'] }, async ({ page }) => {
+    test('Count of api test cases', { tag: ['@smoke'] }, async ({ page }) => {
         await page.locator('button').filter({ hasText: 'APIs list for practice' }).first().click();
         await page.locator('.panel-title').first().waitFor();
         const TestCount = await page.locator('.panel-title').count();
@@ -82,14 +82,14 @@ test.describe('Login Tests', () => { //Tc Added in describe group
 
     });
 
-    test('should display "Logged in as Arati Kadam" after login', { tag: ['@abc'] }, async ({ page }) => {
+    test('should display "Logged in as Arati Kadam" after login', { tag: ['@smoke'] }, async ({ page }) => {
         // The login steps are in beforeEach, so we can directly check the text
         await expect(page.getByText('Logged in as Arati Kadam', { exact: true })).toBeVisible();
 
     });
 
 
- test('Add to cart product', { tag: ['@abc'] }, async ({ page }) => {
+ test('Add to cart product', { tag: ['@smoke'] }, async ({ page }) => {
 
     await page.locator("//a[@href='/products']").click();
 
@@ -107,7 +107,7 @@ test.describe('Login Tests', () => { //Tc Added in describe group
 
     await page.getByText('View Cart', { exact: true }).click();
  });
-test('verify product name in cart', { tag: ['@abc'] }, async ({ page }) => {
+test('verify product name in cart', { tag: ['@smoke'] }, async ({ page }) => {
     // Go to home page (done by beforeEach login)
     // Navigate to Cart page
     await page.getByRole('link', { name: 'Cart' }).click();
@@ -130,7 +130,7 @@ test('verify product name in cart', { tag: ['@abc'] }, async ({ page }) => {
     expect(productName.trim().length).toBeGreaterThan(0);
 });
 
-test('verify cart product price', { tag: ['@abc'] }, async ({ page }) => {
+test('verify cart product price', { tag: ['@smoke'] }, async ({ page }) => {
     // Go to Cart page
     await page.getByRole('link', { name: 'Cart' }).click();
 
@@ -151,7 +151,7 @@ test('verify cart product price', { tag: ['@abc'] }, async ({ page }) => {
     // Assert price follows a price pattern, e.g., "$" or number
     expect(productPrice.trim()).toMatch(/\d/);
 });
-test('sign up error validation - Email Address already exist', {tag : ['@abc']}, async ({ page }) => {
+test('sign up error validation - Email Address already exist', {tag : ['@smoke']}, async ({ page }) => {
 await page.goto('/');
 
     // Click on 'Signup / Login' link
@@ -173,7 +173,7 @@ await page.goto('/');
     await expect(errorMessage).toBeVisible({ timeout: 10000 });
  });
 
-//  test('verify boolean after new signup  ', { tag: ['@abc'] }, async ({ page }) => {
+//  test('verify boolean after new signup  ', { tag: ['@smoke'] }, async ({ page }) => {
 // await page.goto('/')
 
 //  // Click on 'Signup / Login' link to go to the registration form
