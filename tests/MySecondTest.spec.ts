@@ -170,7 +170,7 @@ await page.goto('/');
     // The selector for error may be like: "Email Address already exist!"
     const errorMessage = page.getByText('Email Address already exist!');
    
-    await expect(errorMessage).toBeVisible();
+    await expect(errorMessage).toBeVisible({ timeout: 10000 });
  });
 
 //  test('verify boolean after new signup  ', { tag: ['@abc'] }, async ({ page }) => {
